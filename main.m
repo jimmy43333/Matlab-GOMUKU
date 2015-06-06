@@ -22,7 +22,7 @@ function varargout = main(varargin)
 
 % Edit the above text to modify the response to help main
 
-% Last Modified by GUIDE v2.5 05-Jun-2015 02:26:04
+% Last Modified by GUIDE v2.5 05-Jun-2015 21:57:46
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -62,11 +62,11 @@ p = importdata('pic/mainbg.jpg');
 axes(handles.axes1);
 image(p)
 axis off
-
 %change buttom style
-A=imread('pic/greenpushbottom.jpg'); 
-B = imresize(A,'nearest',2.0); 
-set(handles.start,'CData',B);
+A = imread('pic/greenpushbottom.jpg'); 
+set(handles.start,'CData',A);
+B = imread('pic/redpushbottom.jpg');
+set(handles.exit,'CData',B);
 
 % --- Outputs from this function are returned to the command line.
 function varargout = main_OutputFcn(hObject, eventdata, handles) 
@@ -87,18 +87,23 @@ function start_Callback(hObject, eventdata, handles)
 
 %set(handles.topic,'Visible','off')
 %set(handles.start,'Visible','off')
-%set(handles.Exit,'Visible','off')
+%set(handles.exit,'Visible','off')
 %set(handles.Help,'Visible','off')
 close(gcbf)
 open('player.fig')
 
-% --- Executes on button press in Exit.
-function Exit_Callback(hObject, eventdata, handles)
-% hObject    handle to Exit (see GCBO)
+% --- Executes on button press in exit.
+function exit_Callback(hObject, eventdata, handles)
+% hObject    handle to exit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
-
+out = questdlg('Are you sure?','Exit','Yes','No','default')
+switch out
+    case 'Yes'
+        close(gcbf);
+    case 'No'
+end
+        
 % --- If Enable == 'on', executes on mouse press in 5 pixel border.
 % --- Otherwise, executes on mouse press in 5 pixel border or over start.
 function start_ButtonDownFcn(hObject, eventdata, handles)

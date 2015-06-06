@@ -22,7 +22,7 @@ function varargout = player(varargin)
 
 % Edit the above text to modify the response to help player
 
-% Last Modified by GUIDE v2.5 05-Jun-2015 14:25:28
+% Last Modified by GUIDE v2.5 05-Jun-2015 23:22:49
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -51,16 +51,29 @@ function player_OpeningFcn(hObject, eventdata, handles, varargin)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to player (see VARARGIN)
-
 % Choose default command line output for player
 handles.output = hObject;
-
 % Update handles structure
 guidata(hObject, handles);
-
 % UIWAIT makes player wait for user response (see UIRESUME)
 % uiwait(handles.player);
-
+p1 = importdata('pic/wood.jpg');
+axes(handles.axes3);
+image(p1)
+axis off
+p2 = importdata('pic/frame.jpg');
+axes(handles.axes1);
+image(p2)
+axis off
+p3 = importdata('pic/frame.jpg');
+axes(handles.axes2);
+image(p3)
+axis off
+for i = 1:13
+p[i] = 
+string = ['pic/p' int2str(i) '.jpg']
+A = imread(string); 
+set(handles.p[i],'CData',A);
 
 % --- Outputs from this function are returned to the command line.
 function varargout = player_OutputFcn(hObject, eventdata, handles) 
@@ -76,5 +89,124 @@ varargout{1} = handles.output;
 % --- Executes on button press in gamestart.
 function gamestart_Callback(hObject, eventdata, handles)
 % hObject    handle to gamestart (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p2.
+function p2_Callback(hObject, eventdata, handles)
+% hObject    handle to p2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton4.
+function pushbutton4_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton5.
+function pushbutton5_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton6.
+function pushbutton6_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton7.
+function pushbutton7_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p3.
+function p3_Callback(hObject, eventdata, handles)
+% hObject    handle to p3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p4.
+function p4_Callback(hObject, eventdata, handles)
+% hObject    handle to p4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p5.
+function p5_Callback(hObject, eventdata, handles)
+% hObject    handle to p5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p6.
+function p6_Callback(hObject, eventdata, handles)
+% hObject    handle to p6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p7.
+function p7_Callback(hObject, eventdata, handles)
+% hObject    handle to p7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p8.
+function p8_Callback(hObject, eventdata, handles)
+% hObject    handle to p8 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p9.
+function p9_Callback(hObject, eventdata, handles)
+% hObject    handle to p9 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p10.
+function p10_Callback(hObject, eventdata, handles)
+% hObject    handle to p10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p11.
+function p11_Callback(hObject, eventdata, handles)
+% hObject    handle to p11 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p12.
+function p12_Callback(hObject, eventdata, handles)
+% hObject    handle to p12 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p13.
+function p13_Callback(hObject, eventdata, handles)
+% hObject    handle to p13 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p1.
+function p1_Callback(hObject, eventdata, handles)
+% hObject    handle to p1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
