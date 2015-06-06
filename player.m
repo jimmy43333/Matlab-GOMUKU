@@ -1,3 +1,9 @@
+
+
+
+
+
+
 function varargout = player(varargin)
 % PLAYER MATLAB code for player.fig
 %      PLAYER, by itself, creates a new PLAYER or raises the existing
@@ -22,7 +28,7 @@ function varargout = player(varargin)
 
 % Edit the above text to modify the response to help player
 
-% Last Modified by GUIDE v2.5 05-Jun-2015 23:22:49
+% Last Modified by GUIDE v2.5 07-Jun-2015 00:37:01
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -57,23 +63,32 @@ handles.output = hObject;
 guidata(hObject, handles);
 % UIWAIT makes player wait for user response (see UIRESUME)
 % uiwait(handles.player);
-p1 = importdata('pic/wood.jpg');
-axes(handles.axes3);
-image(p1)
+pass = [0 0];
+background = importdata('pic/playerbg.jpg');
+axes(handles.axes1);
+image(background);
 axis off
 p2 = importdata('pic/frame.jpg');
-axes(handles.axes1);
-image(p2)
-axis off
-p3 = importdata('pic/frame.jpg');
 axes(handles.axes2);
-image(p3)
+image(p2);
 axis off
-for i = 1:13
-p[i] = 
-string = ['pic/p' int2str(i) '.jpg']
-A = imread(string); 
-set(handles.p[i],'CData',A);
+axes(handles.axes3);
+image(p2);
+axis off
+%change buttom style
+A = imread('pic/bluepushbuttom.jpg'); 
+set(handles.gamestart,'CData',A);
+handles.array = {handles.p1, handles.p2, handles.p3,handles.p4,handles.p5,handles.p6,handles.p7,handles.p8,handles.p9,handles.p10,handles.p11,handles.p12,handles.p13};
+handles.vector = {handles.axes4,handles.axes5};
+handles.control = 0;
+guidata(hObject,handles);
+
+for i= 1:13
+    string = ['pic/p' int2str(i) '.jpg'];
+    A = imread(string);
+    set(handles.array{i},'CData',A);
+end
+
 
 % --- Outputs from this function are returned to the command line.
 function varargout = player_OutputFcn(hObject, eventdata, handles) 
@@ -91,118 +106,8 @@ function gamestart_Callback(hObject, eventdata, handles)
 % hObject    handle to gamestart (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p2.
-function p2_Callback(hObject, eventdata, handles)
-% hObject    handle to p2 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in pushbutton4.
-function pushbutton4_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in pushbutton5.
-function pushbutton5_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton5 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in pushbutton6.
-function pushbutton6_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton6 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in pushbutton7.
-function pushbutton7_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton7 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p3.
-function p3_Callback(hObject, eventdata, handles)
-% hObject    handle to p3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p4.
-function p4_Callback(hObject, eventdata, handles)
-% hObject    handle to p4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p5.
-function p5_Callback(hObject, eventdata, handles)
-% hObject    handle to p5 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p6.
-function p6_Callback(hObject, eventdata, handles)
-% hObject    handle to p6 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p7.
-function p7_Callback(hObject, eventdata, handles)
-% hObject    handle to p7 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p8.
-function p8_Callback(hObject, eventdata, handles)
-% hObject    handle to p8 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p9.
-function p9_Callback(hObject, eventdata, handles)
-% hObject    handle to p9 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p10.
-function p10_Callback(hObject, eventdata, handles)
-% hObject    handle to p10 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p11.
-function p11_Callback(hObject, eventdata, handles)
-% hObject    handle to p11 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p12.
-function p12_Callback(hObject, eventdata, handles)
-% hObject    handle to p12 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in p13.
-function p13_Callback(hObject, eventdata, handles)
-% hObject    handle to p13 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+close(gcbf);
+board;
 
 
 % --- Executes on button press in p1.
@@ -210,3 +115,306 @@ function p1_Callback(hObject, eventdata, handles)
 % hObject    handle to p1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 1];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p1.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p1,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+    
+        
+
+% --- Executes on button press in p2.
+function p2_Callback(hObject, eventdata, handles)
+% hObject    handle to p2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 2];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p2.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p2,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+% --- Executes on button press in p3.
+function p3_Callback(hObject, eventdata, handles)
+% hObject    handle to p3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 3];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p3.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p3,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+% --- Executes on button press in p4.
+function p4_Callback(hObject, eventdata, handles)
+% hObject    handle to p4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 4];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p4.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p4,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+
+% --- Executes on button press in p5.
+function p5_Callback(hObject, eventdata, handles)
+% hObject    handle to p5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 5];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p5.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p5,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+
+% --- Executes on button press in p6.
+function p6_Callback(hObject, eventdata, handles)
+% hObject    handle to p6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 6];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p6.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p6,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+% --- Executes on button press in p7.
+function p7_Callback(hObject, eventdata, handles)
+% hObject    handle to p7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 7];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p7.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p7,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+
+% --- Executes on button press in p8.
+function p8_Callback(hObject, eventdata, handles)
+% hObject    handle to p8 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 8];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p8.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p8,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+
+% --- Executes on button press in p9.
+function p9_Callback(hObject, eventdata, handles)
+% hObject    handle to p9 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 9];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p9.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p9,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+
+% --- Executes on button press in p10.
+function p10_Callback(hObject, eventdata, handles)
+% hObject    handle to p10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 10];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p10.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p10,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+
+% --- Executes on button press in p11.
+function p11_Callback(hObject, eventdata, handles)
+% hObject    handle to p11 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 11];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p11.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p11,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+
+% --- Executes on button press in p12.
+function p12_Callback(hObject, eventdata, handles)
+% hObject    handle to p12 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 12];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p12.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p12,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end
+
+
+% --- Executes on button press in p13.
+function p13_Callback(hObject, eventdata, handles)
+% hObject    handle to p13 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(handles.control,2)
+    v = 1;
+    for i = 1:13
+    if isequal(get(handles.array{i},'Enable'),'off')
+        v = 2;
+        pass = [i 13];
+        save('board','pass');
+    end
+    end
+    p = imread('pic/p13.jpg');
+    axes(handles.vector{v});
+    image(p)
+    axis off;
+    set(handles.p13,'Enable','off')
+    handles.control= handles.control + 1;
+    guidata(hObject,handles);
+end

@@ -63,9 +63,9 @@ axes(handles.axes1);
 image(p)
 axis off
 %change buttom style
-A = imread('pic/greenpushbottom.jpg'); 
+A = imread('pic/greenpushbuttom.jpg'); 
 set(handles.start,'CData',A);
-B = imread('pic/redpushbottom.jpg');
+B = imread('pic/redpushbuttom.jpg');
 set(handles.exit,'CData',B);
 
 % --- Outputs from this function are returned to the command line.
@@ -90,7 +90,7 @@ function start_Callback(hObject, eventdata, handles)
 %set(handles.exit,'Visible','off')
 %set(handles.Help,'Visible','off')
 close(gcbf)
-open('player.fig')
+player;
 
 % --- Executes on button press in exit.
 function exit_Callback(hObject, eventdata, handles)

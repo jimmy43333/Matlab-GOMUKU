@@ -22,7 +22,7 @@ function varargout = board(varargin)
 
 % Edit the above text to modify the response to help board
 
-% Last Modified by GUIDE v2.5 04-Jun-2015 22:41:34
+% Last Modified by GUIDE v2.5 07-Jun-2015 00:43:18
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -60,6 +60,37 @@ guidata(hObject, handles);
 
 % UIWAIT makes board wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
+load('board','pass')
+%set background
+pic1 = imread('pic/boardbg.jpg');
+axes(handles.axes6);
+image(pic1);
+axis off
+%set board image
+pic2 = imread('pic/bd1.jpg');
+axes(handles.axes1);
+image(pic2)
+axis off
+%set players
+string = [ 'pic/p' int2str(pass(1)) '.jpg' ];
+pic3 = imread(string);
+axes(handles.axes2);
+image(pic3);
+axis off
+string = [ 'pic/p' int2str(pass(2)) '.jpg' ];
+pic4 = imread(string);
+axes(handles.axes3);
+image(pic4);
+axis off
+%change buttom style
+A = imread('pic/yellowpushbuttom.jpg'); 
+set(handles.changebg,'CData',A);
+%set change board
+handles.change = 0;
+guidata(hObject,handles);
+
+
+
 
 
 % --- Outputs from this function are returned to the command line.
@@ -71,3 +102,65 @@ function varargout = board_OutputFcn(hObject, eventdata, handles)
 
 % Get default command line output from handles structure
 varargout{1} = handles.output;
+
+
+% --- Executes on button press in pushbutton2.
+function pushbutton2_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton3.
+function pushbutton3_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton3.
+function pushbutton5_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in changebg.
+function changebg_Callback(hObject, eventdata, handles)
+
+% hObject    handle to changebg (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%change buttom style
+handles.change= handles.change + 1;
+guidata(hObject,handles);
+k = mod(handles.change,4);
+switch k
+    case 0
+        A = imread('pic/bd1.jpg'); 
+        axes(handles.axes1);
+        image(A);
+        axis off
+    case 1
+        A = imread('pic/bd2.jpg'); 
+        axes(handles.axes1);
+        image(A);
+        axis off
+    case 2
+        A = imread('pic/bd3.jpg'); 
+        axes(handles.axes1);
+        image(A);
+        axis off
+    case 3
+        A = imread('pic/bd4.jpg'); 
+        axes(handles.axes1);
+        image(A);
+        axis off
+end
+
+
+% --- Executes on button press in pushbutton5.
+function pushbutton7_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
