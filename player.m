@@ -1,9 +1,3 @@
-
-
-
-
-
-
 function varargout = player(varargin)
 % PLAYER MATLAB code for player.fig
 %      PLAYER, by itself, creates a new PLAYER or raises the existing
@@ -63,12 +57,13 @@ handles.output = hObject;
 guidata(hObject, handles);
 % UIWAIT makes player wait for user response (see UIRESUME)
 % uiwait(handles.player);
+global pass;
 pass = [0 0];
 background = importdata('pic/playerbg.jpg');
 axes(handles.axes1);
 image(background);
 axis off
-p2 = importdata('pic/frame.jpg');
+[p2,map,transparency] = imread('pic/frame.png');
 axes(handles.axes2);
 image(p2);
 axis off
@@ -82,7 +77,7 @@ handles.array = {handles.p1, handles.p2, handles.p3,handles.p4,handles.p5,handle
 handles.vector = {handles.axes4,handles.axes5};
 handles.control = 0;
 guidata(hObject,handles);
-
+%set player style
 for i= 1:13
     string = ['pic/p' int2str(i) '.jpg'];
     A = imread(string);
@@ -115,13 +110,13 @@ function p1_Callback(hObject, eventdata, handles)
 % hObject    handle to p1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 1];
-        save('board','pass');
     end
     end
     p = imread('pic/p1.jpg');
@@ -140,13 +135,13 @@ function p2_Callback(hObject, eventdata, handles)
 % hObject    handle to p2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 2];
-        save('board','pass');
     end
     end
     p = imread('pic/p2.jpg');
@@ -163,13 +158,13 @@ function p3_Callback(hObject, eventdata, handles)
 % hObject    handle to p3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 3];
-        save('board','pass');
     end
     end
     p = imread('pic/p3.jpg');
@@ -186,13 +181,13 @@ function p4_Callback(hObject, eventdata, handles)
 % hObject    handle to p4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 4];
-        save('board','pass');
     end
     end
     p = imread('pic/p4.jpg');
@@ -210,13 +205,13 @@ function p5_Callback(hObject, eventdata, handles)
 % hObject    handle to p5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 5];
-        save('board','pass');
     end
     end
     p = imread('pic/p5.jpg');
@@ -234,13 +229,13 @@ function p6_Callback(hObject, eventdata, handles)
 % hObject    handle to p6 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 6];
-        save('board','pass');
     end
     end
     p = imread('pic/p6.jpg');
@@ -257,13 +252,13 @@ function p7_Callback(hObject, eventdata, handles)
 % hObject    handle to p7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 7];
-        save('board','pass');
     end
     end
     p = imread('pic/p7.jpg');
@@ -281,13 +276,13 @@ function p8_Callback(hObject, eventdata, handles)
 % hObject    handle to p8 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 8];
-        save('board','pass');
     end
     end
     p = imread('pic/p8.jpg');
@@ -305,13 +300,13 @@ function p9_Callback(hObject, eventdata, handles)
 % hObject    handle to p9 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 9];
-        save('board','pass');
     end
     end
     p = imread('pic/p9.jpg');
@@ -329,13 +324,13 @@ function p10_Callback(hObject, eventdata, handles)
 % hObject    handle to p10 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 10];
-        save('board','pass');
     end
     end
     p = imread('pic/p10.jpg');
@@ -353,13 +348,13 @@ function p11_Callback(hObject, eventdata, handles)
 % hObject    handle to p11 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 11];
-        save('board','pass');
     end
     end
     p = imread('pic/p11.jpg');
@@ -377,13 +372,13 @@ function p12_Callback(hObject, eventdata, handles)
 % hObject    handle to p12 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 12];
-        save('board','pass');
     end
     end
     p = imread('pic/p12.jpg');
@@ -401,13 +396,13 @@ function p13_Callback(hObject, eventdata, handles)
 % hObject    handle to p13 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pass
 if ~isequal(handles.control,2)
     v = 1;
     for i = 1:13
     if isequal(get(handles.array{i},'Enable'),'off')
         v = 2;
         pass = [i 13];
-        save('board','pass');
     end
     end
     p = imread('pic/p13.jpg');

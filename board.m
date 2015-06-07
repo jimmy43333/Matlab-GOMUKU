@@ -60,17 +60,25 @@ guidata(hObject, handles);
 
 % UIWAIT makes board wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
-load('board','pass')
+%load('board','pass');
+global pass change
+change = 0;
 %set background
 pic1 = imread('pic/boardbg.jpg');
 axes(handles.axes6);
 image(pic1);
 axis off
+
 %set board image
-pic2 = imread('pic/bd1.jpg');
+%pic2 = imread('pic/bd1.jpg');
 axes(handles.axes1);
-image(pic2)
-axis off
+%image(pic2)
+%axis off
+grid on;
+
+%set playboard click
+set(handles.axes1,'ButtonDownFcn',@click);
+
 %set players
 string = [ 'pic/p' int2str(pass(1)) '.jpg' ];
 pic3 = imread(string);
@@ -85,12 +93,6 @@ axis off
 %change buttom style
 A = imread('pic/yellowpushbuttom.jpg'); 
 set(handles.changebg,'CData',A);
-%set change board
-handles.change = 0;
-guidata(hObject,handles);
-
-
-
 
 
 % --- Outputs from this function are returned to the command line.
@@ -132,9 +134,9 @@ function changebg_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 %change buttom style
-handles.change= handles.change + 1;
-guidata(hObject,handles);
-k = mod(handles.change,4);
+global change;
+change = change + 1 ;
+k = mod(change,4);
 switch k
     case 0
         A = imread('pic/bd1.jpg'); 
@@ -164,3 +166,7 @@ function pushbutton7_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+function click(gcbo,eventdata,handles)
+a = 5
+
