@@ -55,8 +55,8 @@ function test_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 global VAR BLACK WHITE PLAYERCHANGE;
 VAR = [1,1];
-BLACK = zeros(100,2);
-WHITE = zeros(100,2);
+BLACK = zeros(10,2);
+WHITE = zeros(10,2);
 PLAYERCHANGE = 1;
 
 % Update handles structure

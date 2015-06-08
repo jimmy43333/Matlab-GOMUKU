@@ -22,7 +22,7 @@ function varargout = board(varargin)
 
 % Edit the above text to modify the response to help board
 
-% Last Modified by GUIDE v2.5 07-Jun-2015 00:43:18
+% Last Modified by GUIDE v2.5 08-Jun-2015 03:27:43
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -61,8 +61,12 @@ guidata(hObject, handles);
 % UIWAIT makes board wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 %load('board','pass');
-global pass change
+global pass change VAR BLACK WHITE PLAYERCHANGE;
 change = 0;
+VAR = [1,1];
+BLACK = zeros(10,2);
+WHITE = zeros(10,2);
+PLAYERCHANGE = 1;
 %set background
 pic1 = imread('pic/boardbg.jpg');
 axes(handles.axes6);
@@ -70,14 +74,15 @@ image(pic1);
 axis off
 
 %set board image
-%pic2 = imread('pic/bd1.jpg');
-axes(handles.axes1);
-%image(pic2)
-%axis off
-grid on;
+pic2 = imread('pic/bd1.jpg');
+axes(handles.axes8);
+image(pic2)
+axis off
 
 %set playboard click
-set(handles.axes1,'ButtonDownFcn',@click);
+axes(handles.axes1);
+set(handles.axes1,'ButtonDownFcn',@Click);
+hold on;
 
 %set players
 string = [ 'pic/p' int2str(pass(1)) '.jpg' ];
@@ -140,24 +145,28 @@ k = mod(change,4);
 switch k
     case 0
         A = imread('pic/bd1.jpg'); 
-        axes(handles.axes1);
-        image(A);
-        axis off
+        axes(handles.axes8);
+        %image(A);
+        set(handles.axes1,'Color','red');
+        %axis off
     case 1
         A = imread('pic/bd2.jpg'); 
-        axes(handles.axes1);
-        image(A);
-        axis off
+        axes(handles.axes8);
+        %image(A);
+        set(handles.axes1,'Color','blue');
+        %axis off
     case 2
         A = imread('pic/bd3.jpg'); 
-        axes(handles.axes1);
-        image(A);
-        axis off
+        axes(handles.axes8);
+        %image(A);
+        set(handles.axes1,'Color','green');
+        %axis off
     case 3
         A = imread('pic/bd4.jpg'); 
-        axes(handles.axes1);
-        image(A);
-        axis off
+        axes(handles.axes8);
+        %image(A);
+        set(handles.axes1,'Color','yellow');
+        %axis off
 end
 
 
@@ -167,6 +176,19 @@ function pushbutton7_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-function click(gcbo,eventdata,handles)
-a = 5
-
+function Click(gcbo,eventdata,handles)
+global VAR BLACK WHITE PLAYERCHANGE;
+temp = round(get(gca,'Currentpoint'));
+if PLAYERCHANGE == 1
+    BLACK(VAR(1),:) = temp(2,1:2);
+    Draw(PLAYERCHANGE);
+    Judge(PLAYERCHANGE);
+    VAR(1) = VAR(1) + 1;
+    PLAYERCHANGE = 2;
+else
+    WHITE(VAR(2),:) = temp(2,1:2);
+    Draw(PLAYERCHANGE);
+    Judge(PLAYERCHANGE);
+    VAR(2) = VAR(2) + 1;
+    PLAYERCHANGE = 1;
+end
