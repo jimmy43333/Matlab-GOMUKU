@@ -63,7 +63,7 @@ background = importdata('pic/playerbg.jpg');
 axes(handles.axes1);
 image(background);
 axis off
-[p2,map,transparency] = imread('pic/frame.png');
+p2 = imread('pic/frame.jpg');
 axes(handles.axes2);
 image(p2);
 axis off
@@ -102,7 +102,7 @@ function gamestart_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 close(gcbf);
-board;
+board();
 
 
 % --- Executes on button press in p1.
