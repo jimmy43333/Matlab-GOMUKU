@@ -123,11 +123,22 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in regret.
 function regret_Callback(hObject, eventdata, handles)
+global BLACK WHITE VAR PLAYERCHANGE
 % hObject    handle to regret (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 k = get(gca,'Children');
 delete(k(1,1));
+if PLAYERCHANGE == 2 
+    VAR(1) = VAR(1) - 1   
+    BLACK(VAR(1),:) = 0
+    PLAYERCHANGE = 1;
+elseif PLAYERCHANGE == 1
+    VAR(2) = VAR(2) - 1;
+    WHITE(VAR(2),:) = 0;
+    PLAYERCHANGE = 2;
+end
+  
 
 % --- Executes on button press in restart.
 function restart_Callback(hObject, eventdata, handles)
@@ -168,38 +179,35 @@ switch k
         A = imread('pic/bd1.jpg'); 
         axes(handles.axes8);
         image(A);
-        %set(handles.axes1,'Color','red');
+        axis off
         axes(handles.axes1);
-        %set(handles.axes1,'ButtonDownFcn',@Click);
+        set(handles.axes1,'Color',[.8 .7 .6]);
         hold on;
-        %axis off
     case 1
         A = imread('pic/bd2.jpg'); 
         axes(handles.axes8);
         image(A);
-        %set(handles.axes1,'Color','blue');
+        axis off
         axes(handles.axes1);
-        %set(handles.axes1,'ButtonDownFcn',@Click);
+        set(handles.axes1,'Color',[.7 .7 .7]);
         hold on;
-        %axis off
     case 2
         A = imread('pic/bd3.jpg'); 
         axes(handles.axes8);
-        image(A);
-        %set(handles.axes1,'Color','green');
+        image(A); 
+        axis off
         axes(handles.axes1);
-        %set(handles.axes1,'ButtonDownFcn',@Click);
+        set(handles.axes1,'Color',[.8 .9 .9]);
         hold on;
-        %axis off
+       
     case 3
         A = imread('pic/bd4.jpg'); 
         axes(handles.axes8);
         image(A);
-        %set(handles.axes1,'Color','yellow');
+        axis off
         axes(handles.axes1);
-        %set(handles.axes1,'ButtonDownFcn',@Click);
+        set(handles.axes1,'Color',[.9 .9 .8]);
         hold on;
-        %axis off
 end
 
 
